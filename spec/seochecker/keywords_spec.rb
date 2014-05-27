@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Keywords do
+describe SEOChecker::Keywords do
 
   let(:path) { 'spec/fixtures/keywords.xml' }
-  let(:keywords) { Keywords.new(path) }
+  let(:keywords) { SEOChecker::Keywords.new(path) }
 
   describe 'initialization' do
-    it 'initializes a new `Keywords` object' do
-      expect(keywords).to be_a(Keywords)
+    it 'initializes a new `SEOChecker::Keywords` object' do
+      expect(keywords).to be_a(SEOChecker::Keywords)
     end
   end
 
