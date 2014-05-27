@@ -11,7 +11,7 @@ CREATE TABLE `results` (
   `site` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `keyword` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL DEFAULT '0',
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url` text COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NULL,
   `created_at` datetime NOT NULL,
