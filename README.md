@@ -78,6 +78,8 @@ SEOChecker::Export.new.process
   in the `title` field. Adding some escaping might be helpful.
 * Bing uses some magic (probably by geolocating my IP address), to present me
   with results coming mostly from my country. Not sure if that's what you want.
+* I'm using threads very conservatively, only spawning two of them (one for each
+  search engine). This is intentional as I don't want to hammer search engines.
 * There is no error checking whatsoever throughout the app. This is intentional
   as I'm not really a fan of defensive programming. Some error checking will
   probably be needed though, if this was to be something more than an interview

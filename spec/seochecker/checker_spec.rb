@@ -23,7 +23,7 @@ describe SEOChecker::Checker do
 
       expect(SEOChecker::Result).to receive(:destroy_all)
 
-      expect(SEOChecker::Keywords).to receive(:new).and_return([keyword])
+      allow(SEOChecker::Keywords).to receive(:new).and_return([keyword])
 
       expect(SEOChecker::Google).to receive(:new).with(keyword).and_return(google)
       expect(SEOChecker::Bing).to receive(:new).with(keyword).and_return(bing)
