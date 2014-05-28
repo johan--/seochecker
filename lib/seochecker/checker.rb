@@ -1,6 +1,8 @@
 class SEOChecker::Checker
 
   def process
+    remove_existing_results
+
     keywords.each do |keyword|
       google_results(keyword).each do |result|
         create_result('Google', keyword, result)
@@ -13,6 +15,10 @@ class SEOChecker::Checker
   end
 
   private
+
+  def remove_existing_results
+    SEOChecker::Result.destroy_all
+  end
 
   def keywords
     @keywords ||= SEOChecker::Keywords.new

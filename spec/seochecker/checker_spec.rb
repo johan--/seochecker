@@ -21,6 +21,8 @@ describe SEOChecker::Checker do
         content: content,
       })
 
+      expect(SEOChecker::Result).to receive(:destroy_all)
+
       expect(SEOChecker::Keywords).to receive(:new).and_return([keyword])
 
       expect(SEOChecker::Google).to receive(:new).with(keyword).and_return(google)
