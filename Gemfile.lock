@@ -51,6 +51,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    rake (10.3.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
@@ -80,5 +81,6 @@ DEPENDENCIES
   hirb
   mysql2
   nokogiri
+  rake
   rspec
   searchbing

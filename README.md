@@ -21,6 +21,12 @@ bundle install
 
 ## Usage
 
+### Using `rake`
+
+Execute `rake run` from the command line to read XML keywords, query Google & Bing,
+save results in the database and export them to a CSV file.
+
+
 ### From `irb`
 
 Run `irb`:
