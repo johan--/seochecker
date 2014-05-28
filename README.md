@@ -1,7 +1,7 @@
 # SEO Checker
 
-This applications queries Google and Bing to check what websites are returned
-as top results for predefined queries (parsed from XML file).
+This application queries Google and Bing to check what websites are returned
+as top results for predefined keywords (parsed from an XML file).
 
 
 ## Installation
@@ -24,7 +24,7 @@ bundle install
 ### Using `rake`
 
 Execute `rake run` from the command line to read XML keywords, query Google & Bing,
-save results in the database and export them to a CSV file.
+save results in the database and export them to a CSV file (`tmp/positions.csv`).
 
 
 ### From `irb`
@@ -57,25 +57,27 @@ SEOChecker::Export.new.process
 ## Caveats
 
 * Google returns only 64 results; I think this is Google's limitation and
-  I haven't found an easy way to bypass it (although I'm sure there is one).
+  I haven't found an easy way to bypass that (although I'm sure there is way
+  to have more than 64 results returned).
 * `Result` model doesn't have any validations (it should have them).
-* There should be a config/database.yml file with database access credentials
+* There should be a `config/database.yml` file with database access credentials
   (since my local MySQL installation has an empty root password, I decided
   to skip it).
 * There are no integration/acceptance specs going through the full stack
   (there should be at least one). On the other hand, running this locally
   is a kind of an acceptance test.
-* My Bing's API key is hardcoded in the `bing.rb`; Proper way would be to extract
-  it into a separate file outside of git (this is intentional, so that you
-  can run the app without too many "installation" steps).
+* My Bing's API key is hardcoded in the `bing.rb` (and exposed publicicly on
+  GitHub ;) A proper way would be to extract it into a separate file outside
+  of git (this is intentional, so that you can run the app without too many
+  "installation" steps).
 * It does not check if Bing returned less than 50 results and will issue
-  a second query (with offset = 50), to fetch the 2nd (empty) results page
-* It does not use any form of html escaping (valid for the `description` attribute
-  mostly), so html tags are stored directly in the database. This is potentially
+  a second query (with offset = 50), to fetch the 2nd (empty) results page.
+* It does not use any form of HTML escaping (valid for the `description` attribute
+  mostly), so HTML tags are stored directly in the database. This is potentially
   a security issue.
-* CSV export uses commas, which are also present in `description` field. This is not
-  a problem as it's the last field, but there might be a problem if there is a comma
-  in the `title` field. Adding some escaping might be helpful.
+* CSV export uses commas, which are also present in the `description` field. This
+  is not a problem as it's the last field, but there might be a problem if there
+  is a comma in the `title` field. Adding some escaping might be helpful.
 * Bing uses some magic (probably by geolocating my IP address), to present me
   with results coming mostly from my country. Not sure if that's what you want.
 * I'm using threads very conservatively, only spawning two of them (one for each
