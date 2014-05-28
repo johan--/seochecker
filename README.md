@@ -12,6 +12,13 @@ You need to create a new MySQL database. You can do that with the following comm
 mysql --default-character-set=UTF8 -h localhost -u root -p < config/database.sql
 ```
 
+After that you need to bundle gems:
+
+```bash
+bundle install
+```
+
+
 ## Usage
 
 ### From `irb`
