@@ -1,5 +1,6 @@
 module SEOChecker; end
 
+require 'seochecker/bing'
 require 'seochecker/checker'
 require 'seochecker/database'
 require 'seochecker/google'

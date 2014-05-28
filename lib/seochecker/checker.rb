@@ -3,7 +3,11 @@ class SEOChecker::Checker
   def process
     keywords.each do |keyword|
       google_results(keyword).each do |result|
-        create_result(keyword, result)
+        create_result('Google', keyword, result)
+      end
+
+      bing_results(keyword).each do |result|
+        create_result('Bing', keyword, result)
       end
     end
   end
@@ -18,11 +22,15 @@ class SEOChecker::Checker
     SEOChecker::Google.new(keyword).fetch_results
   end
 
-  def create_result(keyword, result)
+  def bing_results(keyword)
+    SEOChecker::Bing.new(keyword).fetch_results
+  end
+
+  def create_result(site, keyword, result)
     SEOChecker::Result.create({
-      site: 'Google',
+      site: site,
       keyword: keyword,
-      position: result.index + 1, # returned index is 0 indexed
+      position: result.index + 1, # results are 0-indexed
       url: result.uri,
       title: result.title,
       description: result.content,
